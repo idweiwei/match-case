@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="pick-city">
+        <div class="city-title">选择城市 <span class="fa fa-times"></span></div>
+        <div class="match">
+            <!--<p>北京</p>-->
+        </div>
+        <div class="city-wrap">
+            <div class="search-area"><span class="search-icon fa fa-search"></span><input type="text" placeholder="找城市"></div>
+            <div class="current-city">
+                <span class="high">北京</span><span>当前定位城市</span>
+            </div>
+            <div class="lists">
+                <div class="list-item">
+                    <h2 class="list-title">热门</h2>
+                    <ul>
+                        <li>北京</li>
+                        <li>北京</li>
+                        <li>北京</li>
+                    </ul>
+                </div>
+                <div class="all-lists">
+                    <div class="list-item">
+                        <h2 class="list-title">A</h2>
+                        <ul>
+                            <li>北京</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="citydata.js"></script>
+<script>
+    var codeA = 'A'.charCodeAt();
+    var t = String.fromCharCode(96);
+    var alphabet = [];
+    for(var i=0; i<26; i++){
+        //alphabet.push(String.fromCharCode(65+i))
+        alphabet.push({
+            word: String.fromCharCode(65+i),
+            list:[]
+        })
+    }
+
+    for(var j =0; j<cityList.length; j++){
+        var firstLetter = cityList[j][1].charAt(0).toUpperCase();
+        alphabet[firstLetter.charCodeAt()-65].list.push(cityList[j]);
+    }
+
+    var listDom = document.querySelector('.all-lists'), str='';
+
+    alphabet.forEach(function(v,i){
+        if(v.list.length!=0){
+
+            str += '<div class="list-item"><h2 class="list-title">'+ v.word+'</h2><ul>';
+            v.list.forEach(function(li,j){
+                str+='<li>'+li[0]+'</li>'
+            });
+            str += '</ul></div>';
+        }
+    });
+    listDom.innerHTML = str;
+
+var inputDom = document.querySelector('.search-area input'),
+    matchDom = document.querySelector('.match');
+    inputDom.addEventListener('input',function(){
+        this.value = this.value.replace(/(^\s+)|(\s+$)/,"");
+        if(this.value.length<=0) {
+            matchDom.style.display = 'none';
+            return;
+        }
+        matchDom.style.display = 'block';
+        match(this.value);
+    },false);
+
+
+    function match(key){
+
+        var str = '';
+        cityList.forEach(function(val){
+            if(val[0].substr(0,key.length) == key || val[1].substr(0,key.length) == key || val[2].substr(0,key.length) == key){
+                str += '<p>'+val[0]+'</p>';
+            }
+
+        });
+        matchDom.innerHTML = str;
+        /*if(key.length == 1){
+
+            alphabet.forEach(function(val){
+                if(val.word == key.toUpperCase()){
+                    console.log(val.list)
+                }
+
+            });
+        }else{
+            cityList.forEach(function(val){
+                if(val[1].substr(0,key.length) == key || val[2].substr(0,key.length) == key){
+                    str += '<p>'+val[0]+'</p>';
+                }
+
+            });
+            matchDom.innerHTML = str;
+        }*/
+
+
+
+    }
+</script>
+</body>
+</html>

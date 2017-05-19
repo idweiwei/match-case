@@ -1,0 +1,115 @@
+.container .pick-city {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #eeeeee;
+    z-index: 2;
+    font-size: .9rem;
+}
+.container .match{
+    position: absolute;
+    top: 100px;
+    bottom: 0;
+    width: 100%;
+    overflow: auto;
+    background: #fff6de;
+    text-indent: 20px;
+    line-height: 2;
+    z-index: 2;
+    display: none;
+}
+.container .match p{
+    border-bottom: 1px solid #dedede;
+}
+
+.container .pick-city .high {
+    color: #77e69c;
+}
+.container .pick-city .city-title {
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    font-size: 16px;
+    position: relative;
+    background: #ffffff;
+}
+.container .pick-city .city-title .fa {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 44px;
+    height: 100%;
+    line-height: 50px;
+    font-size: 24px;
+    font-weight: 100;
+}
+.container .pick-city .search-area {
+    margin: 10px 15px;
+    background: #ffffff;
+    position: relative;
+}
+.container .pick-city .search-area .search-icon {
+    position: absolute;
+    left: 0;
+    width: 35px;
+    text-align: center;
+    line-height: 30px;
+}
+.container .pick-city .search-area input {
+    outline: none;
+    display: block;
+    width: 100%;
+    height: 30px;
+    border: none;
+    padding-left: 35px;
+}
+.container .pick-city .current-city {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    background: #ffffff;
+}
+.container .pick-city .current-city span {
+    float: left;
+}
+.container .pick-city .current-city span:first-child {
+    font-size: 20px;
+    display: inline-block;
+    width: 60px;
+}
+.container .pick-city .current-city span:nth-child(2) {
+    color: #666;
+}
+.container .pick-city .city-wrap {
+    overflow: auto;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+.container .pick-city .lists .list-item:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.container .pick-city .lists .list-item .list-title {
+    height: 40px;
+    line-height: 40px;
+    text-indent: 10px;
+}
+.container .pick-city .lists .list-item li {
+    background: #ffffff;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 25%;
+    float: left;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #dddddd;
+}
+.container .pick-city .lists .list-item li:nth-of-type(4n) {
+    border-right: none;
+}
